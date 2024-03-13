@@ -1,0 +1,12 @@
+.odds-display {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: start;
+  margin: 1rem 2rem;
+}
+
+.league-header {
+  font-size: 16px;
+  font-weight: 600;
+}

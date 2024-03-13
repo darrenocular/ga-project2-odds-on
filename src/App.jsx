@@ -1,21 +1,21 @@
 import { useState } from "react";
 import { Navigate, Route, Routes } from "react-router-dom";
 import NavBar from "./components/NavBar";
-import OddsDisplay from "./components/OddsDisplay";
-import Main from "./pages/Main";
+import Index from "./pages/Index";
 import Profile from "./pages/Profile";
 import MyBets from "./pages/MyBets";
+import LiveScores from "./pages/LiveScores";
 
 function App() {
   return (
     <>
       <NavBar />
-      <OddsDisplay />
       <Routes>
-        <Route path="/" element={<Main />} />
+        <Route path="/" element={<Index />} />
+        <Route path="/livescores" element={<LiveScores />} />
         <Route path="/:username" element={<Profile />} />
         <Route path="/:username/bets" element={<MyBets />} />
-        <Route path="*" element={<Main />} />
+        <Route path="*" element={<Index />} />
       </Routes>
     </>
   );

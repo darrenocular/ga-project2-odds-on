@@ -1,0 +1,23 @@
+.odds-item {
+  margin: 0.4rem 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 14px;
+  font-weight: 400;
+  width: 100%;
+  padding: 8px 12px;
+  box-shadow: 0 0 4px 4px rgba(0, 0, 0, 0.1);
+}
+
+.odds-item:hover {
+  filter: brightness(98%);
+}
+
+.bg-lt-orange {
+  background-color: #fff1d6;
+}
+
+.bg-lt-yellow {
+  background-color: #fcffd6;
+}
