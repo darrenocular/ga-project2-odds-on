@@ -1,0 +1,9 @@
+.historical-odds-display {
+  width: 90%;
+  background-color: #ff00007f;
+  border: 0.5px solid #ff0000;
+  font-size: 14px;
+  font-weight: 300;
+  padding: 8px;
+  margin: 24px auto;
+}

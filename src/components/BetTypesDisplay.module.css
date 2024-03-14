@@ -1,0 +1,34 @@
+.table {
+  width: 90%;
+  margin: 24px auto;
+  border-collapse: collapse;
+  table-layout: fixed;
+}
+
+.table th {
+  padding: 8px;
+}
+
+.table td {
+  padding: 6px;
+}
+
+.thead {
+  background-color: #ffcd6b;
+  font-size: 16px;
+  padding: 24px;
+}
+
+.tbody tr:nth-child(1),
+.tbody tr:nth-child(3) {
+  background-color: #fcffd6;
+}
+
+.tbody tr:nth-child(2) {
+  background-color: #fff1d6;
+}
+
+.row {
+  font-size: 14px;
+  font-weight: 300;
+}

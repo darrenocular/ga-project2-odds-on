@@ -565,16 +565,18 @@ const OddsDisplay = () => {
   //   }, []);
 
   return (
-    <div className={styles["odds-display"]}>
-      <p className={styles["league-header"]}>English Premier League (EPL)</p>
-      {sampleOdds.map((game, idx) => (
-        <OddsItem
-          className={idx % 2 === 0 ? "bg-lt-orange" : "bg-lt-yellow"}
-          key={idx}
-          game={game}
-        ></OddsItem>
-      ))}
-    </div>
+    <>
+      <div className={styles["odds-display"]}>
+        <p className={styles["league-header"]}>English Premier League (EPL)</p>
+        {sampleOdds.map((game, idx) => (
+          <OddsItem
+            className={idx % 2 === 0 ? "bg-lt-orange" : "bg-lt-yellow"}
+            key={idx}
+            game={game}
+          ></OddsItem>
+        ))}
+      </div>
+    </>
   );
 };
 

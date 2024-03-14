@@ -1,34 +1,55 @@
-import React from "react";
+import React, { useState } from "react";
 import styles from "./OddsItem.module.css";
 import Button from "./Button";
+import MatchDetailsModal from "./MatchDetailsModal";
 
 const OddsItem = ({ className, game }) => {
   const id = game.id;
   const startTime = game["commence_time"];
+  const isoStartTime = new Date(startTime);
   const homeTeam = game["home_team"];
   const awayTeam = game["away_team"];
-  const betType = game.bookmakers[0].markets[0].key;
   const homeWinOdds = game.bookmakers[0].markets[0].outcomes[0].price;
   const awayWinOdds = game.bookmakers[0].markets[0].outcomes[1].price;
   const drawOdds = game.bookmakers[0].markets[0].outcomes[2].price;
 
+  const [showMatchDetailsModal, setShowMatchDetailsModal] = useState(false);
+
   return (
-    <div className={`${styles["odds-item"]} ${styles[className]}`}>
-      <div>{startTime}</div>
-      <div>
-        {homeTeam} vs {awayTeam}
+    <>
+      {showMatchDetailsModal && (
+        <MatchDetailsModal
+          game={game}
+          setShowMatchDetailsModal={setShowMatchDetailsModal}
+        ></MatchDetailsModal>
+      )}
+
+      <div className={`${styles["odds-item"]} ${styles[className]}`}>
+        <div className={styles["game-details"]}>
+          <div className={styles["start-time"]}>
+            {isoStartTime.toDateString()}
+          </div>
+          <div className={styles.game}>
+            {homeTeam} vs {awayTeam}
+          </div>
+          <div className={styles["home-odds"]}>
+            {homeTeam} Win: {homeWinOdds}
+          </div>
+          <div className={styles.draw}>Draw: {drawOdds}</div>
+          <div className={styles["away-odds"]}>
+            {awayTeam} Win: {awayWinOdds}
+          </div>
+        </div>
+        <div>
+          <Button
+            className="btn-bet"
+            onClick={() => setShowMatchDetailsModal(true)}
+          >
+            Place Bet
+          </Button>
+        </div>
       </div>
-      <div>
-        {homeTeam} wins: {homeWinOdds}
-      </div>
-      <div>Draw: {drawOdds}</div>
-      <div>
-        {awayTeam} wins: {awayWinOdds}
-      </div>
-      <div>
-        <Button className="btn-bet">Place Bet</Button>
-      </div>
-    </div>
+    </>
   );
 };
 

@@ -22,3 +22,29 @@
   font-size: 14px;
   background-color: #1e7400;
 }
+
+.btn-close {
+  width: 32px;
+  border-radius: 0;
+  margin: 4px;
+  font-size: 12px;
+  background-color: #ff0000;
+}
+
+.btn-types-active {
+  width: 10rem;
+  font-size: 14px;
+  font-weight: 600;
+  background-color: #ffd600;
+  border-radius: 0;
+  color: black;
+}
+
+.btn-types-inactive {
+  width: 10rem;
+  font-size: 14px;
+  font-weight: 600;
+  background-color: F5F5F5;
+  border-radius: 0;
+  color: black;
+}

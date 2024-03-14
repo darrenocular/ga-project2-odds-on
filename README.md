@@ -16,3 +16,5 @@ A sports betting platform displaying live odds for your favourite matches built 
 ## Next Steps (Icebox)
 
 ## References
+
+- The Odds API documentation: https://the-odds-api.com/liveapi/guides/v4/#overview

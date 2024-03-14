@@ -14,6 +14,13 @@
   filter: brightness(98%);
 }
 
+.game-details {
+  display: flex;
+  flex-basis: 75%;
+  justify-content: space-between;
+  align-items: center;
+}
+
 .bg-lt-orange {
   background-color: #fff1d6;
 }
