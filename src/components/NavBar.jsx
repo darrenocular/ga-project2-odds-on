@@ -19,7 +19,7 @@ const NavBar = () => {
           <Link to="/">Home</Link>
         </li>
         <li>
-          <Link to="/livescores">Live Scores</Link>
+          <Link to="/scores">Scores</Link>
         </li>
         {/* Only appears if user is logged in */}
         {/* <li>

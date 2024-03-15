@@ -1,0 +1,38 @@
+.scores-display {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: start;
+  margin: 1rem 2rem;
+}
+
+.league-header {
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.table {
+  width: 100%;
+  margin: 12px auto;
+  border-collapse: collapse;
+  table-layout: fixed;
+}
+
+.table th {
+  padding: 8px;
+}
+
+.table td {
+  padding: 6px;
+}
+
+.thead {
+  background-color: #ffcd6b;
+  font-size: 16px;
+  padding: 24px;
+}
+
+.trow {
+  font-size: 14px;
+  font-weight: 300;
+}
