@@ -1,7 +1,9 @@
-import { Button } from "@mui/material";
 import React from "react";
 import ReactDOM from "react-dom";
 import FormInput from "./FormInput";
+import Button from "./Button";
+import "./Modal.css";
+import styles from "./LoginModal.module.css";
 
 const OverLay = (props) => {
   return (

@@ -5,11 +5,15 @@ import Index from "./pages/Index";
 import Profile from "./pages/Profile";
 import MyBets from "./pages/MyBets";
 import Scores from "./pages/Scores";
+import LoginModal from "./components/LoginModal";
 
 function App() {
+  const [showLoginModal, setShowLoginModal] = useState(false);
+
   return (
     <>
-      <NavBar />
+      <NavBar setShowLoginModal={setShowLoginModal} />
+      {showLoginModal && <LoginModal></LoginModal>}
       <Routes>
         <Route path="/" element={<Index />} />
         <Route path="/scores" element={<Scores />} />

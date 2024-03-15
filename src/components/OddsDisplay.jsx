@@ -536,21 +536,24 @@ const OddsDisplay = () => {
   const [odds, setOdds] = useState([]);
 
   // Get odds (works)
-  //   const getOdds = async (signal) => {
-  //     try {
-  //       const res = await fetch(
-  //         "https://api.the-odds-api.com/v4/sports/soccer_epl/odds/?apiKey=257cd4535f1bde886a7e14b2102f90b7&bookmakers=paddypower&markets=h2h",
-  //         { signal }
-  //       );
+  // const getOdds = async (signal) => {
+  //   try {
+  //     const res = await fetch(
+  //       import.meta.env.VITE_SERVER +
+  //         "/odds/?apiKey=" +
+  //         import.meta.env.VITE_API_KEY +
+  //         "&bookmakers=paddypower&markets=h2h",
+  //       { signal }
+  //     );
 
-  //       if (res.ok) {
-  //         const data = await res.json();
-  //         setOdds(data);
-  //       }
-  //     } catch (error) {
-  //       console.log(error);
+  //     if (res.ok) {
+  //       const data = await res.json();
+  //       setOdds(data);
   //     }
-  //   };
+  //   } catch (error) {
+  //     console.log(error);
+  //   }
+  // };
 
   // Get odds on mount
   //   useEffect(() => {
