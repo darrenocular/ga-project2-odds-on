@@ -4,7 +4,7 @@ import styles from "./NavBar.module.css";
 import Button from "./Button";
 import LoginContext from "../context/LoginContext";
 
-const NavBar = ({ setShowLoginModal }) => {
+const NavBar = ({ setShowLoginModal, setLoggedInUser }) => {
   const loginContext = useContext(LoginContext);
 
   return (
@@ -36,7 +36,10 @@ const NavBar = ({ setShowLoginModal }) => {
           )}
           {loginContext.loggedInUser ? (
             <li>
-              <Button className="btn-login" onClick={loginContext.handleLogOut}>
+              <Button
+                className="btn-login"
+                onClick={() => setLoggedInUser(null)}
+              >
                 Log Out
               </Button>
             </li>

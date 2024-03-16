@@ -49,16 +49,17 @@ function App() {
     }
   };
 
-  const handleLogOut = () => setLoggedInUser(null);
-
   useEffect(() => {
     getUsers();
   }, []);
 
   return (
     <>
-      <LoginContext.Provider value={{ loggedInUser, handleLogOut }}>
-        <NavBar setShowLoginModal={setShowLoginModal} />
+      <LoginContext.Provider value={{ loggedInUser, setShowLoginModal }}>
+        <NavBar
+          setShowLoginModal={setShowLoginModal}
+          setLoggedInUser={setLoggedInUser}
+        />
         {showLoginModal && (
           <LoginModal
             setShowLoginModal={setShowLoginModal}

@@ -9,6 +9,7 @@ const FormInput = (props) => {
       className={`${styles[props.className]} ${styles.input}`}
       placeholder={props.placeholder}
       onChange={props.onChange}
+      name={props.name}
       value={props.value}
     ></input>
   );

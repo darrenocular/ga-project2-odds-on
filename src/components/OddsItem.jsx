@@ -1,9 +1,12 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import styles from "./OddsItem.module.css";
 import Button from "./Button";
 import MatchDetailsModal from "./MatchDetailsModal";
+import LoginContext from "../context/LoginContext";
 
 const OddsItem = ({ className, game }) => {
+  const loginContext = useContext(LoginContext);
+
   const id = game.id;
   const startTime = game["commence_time"];
   const isoStartTime = new Date(startTime);
@@ -43,7 +46,11 @@ const OddsItem = ({ className, game }) => {
         <div>
           <Button
             className="btn-bet"
-            onClick={() => setShowMatchDetailsModal(true)}
+            onClick={() => {
+              loginContext.loggedInUser
+                ? setShowMatchDetailsModal(true)
+                : loginContext.setShowLoginModal(true);
+            }}
           >
             Place Bet
           </Button>

@@ -15,13 +15,11 @@ const OverLay = (props) => {
     e.preventDefault();
     if (usernameInput !== "" && passwordInput !== "") {
       props.handleLogin(usernameInput, passwordInput);
-      setUsernameInput("");
-      setPasswordInput("");
     } else {
       console.log("Please provide a valid input");
-      setUsernameInput("");
-      setPasswordInput("");
     }
+    setUsernameInput("");
+    setPasswordInput("");
   };
 
   return (

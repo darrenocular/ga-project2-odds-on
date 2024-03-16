@@ -57,6 +57,7 @@ const OverLay = ({ game, setShowMatchDetailsModal }) => {
         </div>
         {!showHistoricalOdds ? (
           <BetTypesDisplay
+            id={id}
             homeTeam={homeTeam}
             awayTeam={awayTeam}
             betType={betType}
