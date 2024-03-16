@@ -8,6 +8,8 @@ const FormInput = (props) => {
       type={props.type}
       className={`${styles[props.className]} ${styles.input}`}
       placeholder={props.placeholder}
+      onChange={props.onChange}
+      value={props.value}
     ></input>
   );
 };

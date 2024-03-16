@@ -1,9 +1,12 @@
-import React, { useState } from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import styles from "./NavBar.module.css";
 import Button from "./Button";
+import LoginContext from "../context/LoginContext";
 
 const NavBar = ({ setShowLoginModal }) => {
+  const loginContext = useContext(LoginContext);
+
   return (
     <>
       <header className={styles.navbar}>
@@ -17,28 +20,36 @@ const NavBar = ({ setShowLoginModal }) => {
           <li>
             <Link to="/scores">Scores</Link>
           </li>
-          {/* Only appears if user is logged in */}
-          {/* <li>
-          <Link to={`/${username}`}>Profile</Link>
-        </li>
-        <li>
-          <Link to={`/${username}/bets`}>My Bets</Link>
-        </li> */}
-          <li>
-            <Button
-              className="btn-login"
-              onClick={() => setShowLoginModal(true)}
-            >
-              Login
-            </Button>
-          </li>
-          {/* Only appears if user is logged in */}
-          {/* <li>
-          <Button className="btn-login">Log Out</Button>
-        </li> */}
-          {/* <li>
-            <Link to="/:username">@username</Link>
-          </li> */}
+          {loginContext.loggedInUser && (
+            <>
+              <li>
+                <Link to={`/${loginContext.loggedInUser.fields.username}`}>
+                  @{loginContext.loggedInUser.fields.username}
+                </Link>
+              </li>
+              <li>
+                <Link to={`/${loginContext.loggedInUser.fields.username}/bets`}>
+                  My Bets
+                </Link>
+              </li>
+            </>
+          )}
+          {loginContext.loggedInUser ? (
+            <li>
+              <Button className="btn-login" onClick={loginContext.handleLogOut}>
+                Log Out
+              </Button>
+            </li>
+          ) : (
+            <li>
+              <Button
+                className="btn-login"
+                onClick={() => setShowLoginModal(true)}
+              >
+                Login
+              </Button>
+            </li>
+          )}
         </ul>
       </header>
     </>
