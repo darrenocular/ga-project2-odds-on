@@ -11,3 +11,9 @@
   font-weight: 300;
   width: 35%;
 }
+
+.login-input {
+  width: 60%;
+  font-size: 16px;
+  font-weight: 400;
+}

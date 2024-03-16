@@ -28,6 +28,7 @@ const BetTypesDisplay = ({
           <td>{homeWinOdds}</td>
           <td>
             <FormInput
+              type="text"
               placeholder="Bet amount"
               className="bet-input"
             ></FormInput>
@@ -39,6 +40,7 @@ const BetTypesDisplay = ({
           <td>{drawOdds}</td>
           <td>
             <FormInput
+              type="text"
               placeholder="Bet amount"
               className="bet-input"
             ></FormInput>
@@ -52,6 +54,7 @@ const BetTypesDisplay = ({
           <td>{awayWinOdds}</td>
           <td>
             <FormInput
+              type="text"
               placeholder="Bet amount"
               className="bet-input"
             ></FormInput>

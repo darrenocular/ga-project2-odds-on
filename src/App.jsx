@@ -10,10 +10,17 @@ import LoginModal from "./components/LoginModal";
 function App() {
   const [showLoginModal, setShowLoginModal] = useState(false);
 
+  const handleLogin = () => {};
+
   return (
     <>
       <NavBar setShowLoginModal={setShowLoginModal} />
-      {showLoginModal && <LoginModal></LoginModal>}
+      {showLoginModal && (
+        <LoginModal
+          setShowLoginModal={setShowLoginModal}
+          handleLogin={handleLogin}
+        ></LoginModal>
+      )}
       <Routes>
         <Route path="/" element={<Index />} />
         <Route path="/scores" element={<Scores />} />
