@@ -1,0 +1,16 @@
+.bg-lt-orange {
+  background-color: #fcffd6;
+}
+
+.bg-lt-yellow {
+  background-color: #fff1d6;
+}
+
+.row {
+  font-size: 14px;
+  font-weight: 300;
+}
+
+.flex {
+  display: flex;
+}

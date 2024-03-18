@@ -11,6 +11,7 @@ const FormInput = (props) => {
       onChange={props.onChange}
       name={props.name}
       value={props.value}
+      autoFocus={props.autoFocus}
     ></input>
   );
 };

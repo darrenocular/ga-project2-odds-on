@@ -31,6 +31,18 @@
   background-color: #ff0000;
 }
 
+.btn-amend {
+  font-size: 14px;
+  background-color: #0500ff;
+  border-radius: 4px 0 0 4px;
+}
+
+.btn-delete {
+  font-size: 14px;
+  background-color: #ff0000;
+  border-radius: 0 4px 4px 0;
+}
+
 .btn-types-active {
   width: 10rem;
   font-size: 14px;

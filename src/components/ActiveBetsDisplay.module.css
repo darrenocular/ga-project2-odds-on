@@ -1,0 +1,28 @@
+.active-bets-display {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: start;
+  margin: 0 2rem;
+}
+
+.table {
+  width: 100%;
+  margin: 1.5rem auto;
+  border-collapse: collapse;
+  table-layout: fixed;
+}
+
+.table th {
+  padding: 8px;
+}
+
+.table td {
+  padding: 6px;
+}
+
+.thead {
+  background-color: #ffcd6b;
+  font-size: 16px;
+  padding: 24px;
+}

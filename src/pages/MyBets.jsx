@@ -1,7 +1,8 @@
 import React from "react";
+import MyBetsDisplay from "../components/MyBetsDisplay";
 
 const MyBets = () => {
-  return <div>MyBets</div>;
+  return <MyBetsDisplay></MyBetsDisplay>;
 };
 
 export default MyBets;

@@ -36,12 +36,14 @@ const NavBar = ({ setShowLoginModal, setLoggedInUser }) => {
           )}
           {loginContext.loggedInUser ? (
             <li>
-              <Button
-                className="btn-login"
-                onClick={() => setLoggedInUser(null)}
-              >
-                Log Out
-              </Button>
+              <Link to="/">
+                <Button
+                  className="btn-login"
+                  onClick={() => setLoggedInUser(null)}
+                >
+                  Log Out
+                </Button>
+              </Link>
             </li>
           ) : (
             <li>

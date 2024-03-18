@@ -180,37 +180,37 @@ const sampleScores = [
 ];
 
 const ScoresDisplay = () => {
-  //   const [scores, setScores] = useState([]);
+  const [scores, setScores] = useState([]);
 
-  //   const getScores = async () => {
-  //     try {
-  //       const res = await fetch(
-  //         import.meta.env.VITE_SERVER +
-  //           "/scores/?daysFrom=3&apiKey=" +
-  //           import.meta.env.VITE_API_KEY
-  //       );
+  // const getScores = async () => {
+  //   try {
+  //     const res = await fetch(
+  //       import.meta.env.VITE_SERVER +
+  //         "/scores/?daysFrom=3&apiKey=" +
+  //         import.meta.env.VITE_API_KEY
+  //     );
 
-  //       if (res.ok) {
-  //         const data = await res.json();
-  //         setScores(data);
-  //       }
-  //     } catch (error) {
-  //       console.log(error.message);
+  //     if (res.ok) {
+  //       const data = await res.json();
+  //       setScores(data);
   //     }
+  //   } catch (error) {
+  //     console.log(error.message);
+  //   }
+  // };
+
+  // useEffect(() => {
+  //   const scoresController = new AbortController();
+  //   getScores(scoresController.signal);
+
+  //   return () => {
+  //     return scoresController.abort();
   //   };
+  // }, [scores]);
 
-  //   useEffect(() => {
-  //     const scoresController = new AbortController();
-  //     getScores(scoresController.signal);
-
-  //     return () => {
-  //       return scoresController.abort();
-  //     };
-  //   }, [scores]);
-
-  //   useEffect(() => {
-  //     getScores();
-  //   }, []);
+  // useEffect(() => {
+  //   getScores();
+  // }, []);
 
   return (
     <>
