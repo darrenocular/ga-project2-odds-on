@@ -1,9 +1,9 @@
 import React from "react";
 import { useParams } from "react-router-dom";
+import MyProfileDisplay from "../components/MyProfileDisplay";
 
 const Profile = () => {
-  const params = useParams();
-  return <div>{params.username}'s Profile</div>;
+  return <MyProfileDisplay></MyProfileDisplay>;
 };
 
 export default Profile;

@@ -43,6 +43,13 @@
   border-radius: 0 4px 4px 0;
 }
 
+.btn-add-funds {
+  background-color: #1e7400;
+  font-size: 14px;
+  width: 64px;
+  margin-left: 8px;
+}
+
 .btn-types-active {
   width: 10rem;
   font-size: 14px;

@@ -1,0 +1,18 @@
+.my-profile-display {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.user {
+  font-size: 32px;
+  font-weight: 600;
+  margin: 0 0 8px 0;
+}
+
+.username {
+  font-size: 16px;
+  font-weight: 300;
+  margin: 0;
+}

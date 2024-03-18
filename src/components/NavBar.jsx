@@ -24,8 +24,11 @@ const NavBar = ({ setShowLoginModal, setLoggedInUser }) => {
             <>
               <li>
                 <Link to={`/${loginContext.loggedInUser.fields.username}`}>
-                  @{loginContext.loggedInUser.fields.username}
+                  <strong>@{loginContext.loggedInUser.fields.username}</strong>
                 </Link>
+              </li>
+              <li>
+                Wallet: S${loginContext.loggedInUser.fields["wallet_balance"]}
               </li>
               <li>
                 <Link to={`/${loginContext.loggedInUser.fields.username}/bets`}>

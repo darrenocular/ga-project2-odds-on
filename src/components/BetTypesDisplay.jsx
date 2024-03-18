@@ -63,11 +63,6 @@ const BetTypesDisplay = ({
 
       if (res.ok) {
         console.log("Bet added");
-        setBetAmounts({
-          H: "",
-          D: "",
-          A: "",
-        });
       }
     } catch (error) {
       console.log(error.message);
@@ -98,7 +93,19 @@ const BetTypesDisplay = ({
               name="H"
               onChange={handleBetAmountChange}
             ></FormInput>
-            <Button className="btn-bet" name="H" onClick={addBet}>
+            <Button
+              className="btn-bet"
+              name="H"
+              onClick={(e) => {
+                loginContext.handleReduceWallet(betAmounts.H);
+                addBet(e);
+                setBetAmounts({
+                  H: "",
+                  D: "",
+                  A: "",
+                });
+              }}
+            >
               Place Bet
             </Button>
           </td>
@@ -115,7 +122,19 @@ const BetTypesDisplay = ({
               name="D"
               onChange={handleBetAmountChange}
             ></FormInput>
-            <Button className="btn-bet" name="D" onClick={addBet}>
+            <Button
+              className="btn-bet"
+              name="D"
+              onClick={(e) => {
+                addBet(e);
+                loginContext.handleReduceWallet(betAmounts.D);
+                setBetAmounts({
+                  H: "",
+                  D: "",
+                  A: "",
+                });
+              }}
+            >
               Place Bet
             </Button>
           </td>
@@ -134,7 +153,19 @@ const BetTypesDisplay = ({
               name="A"
               onChange={handleBetAmountChange}
             ></FormInput>
-            <Button className="btn-bet" name="A" onClick={addBet}>
+            <Button
+              className="btn-bet"
+              name="A"
+              onClick={(e) => {
+                addBet(e);
+                loginContext.handleReduceWallet(betAmounts.A);
+                setBetAmounts({
+                  H: "",
+                  D: "",
+                  A: "",
+                });
+              }}
+            >
               Place Bet
             </Button>
           </td>

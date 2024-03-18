@@ -9,7 +9,7 @@ import LoginModal from "./components/LoginModal";
 import LoginContext from "./context/LoginContext";
 
 function App() {
-  const users = useRef([]);
+  const [users, setUsers] = useState([]);
   const [loggedInUser, setLoggedInUser] = useState(null);
   const [showLoginModal, setShowLoginModal] = useState(false);
 
@@ -26,7 +26,7 @@ function App() {
 
       if (res.ok) {
         const data = await res.json();
-        users.current = data.records;
+        setUsers(data.records);
       }
     } catch (error) {
       console.log(error.message);
@@ -34,7 +34,7 @@ function App() {
   };
 
   const handleLogin = (username, password) => {
-    const userMatchOnUsername = users.current.find(
+    const userMatchOnUsername = users.find(
       (user) => user.fields.username === username
     );
 
@@ -49,13 +49,98 @@ function App() {
     }
   };
 
+  const handleAddWallet = async (amountToAdd) => {
+    try {
+      const res = await fetch(
+        "https://api.airtable.com/v0/appDpRLHVndobtdcz/tblg4u2ujHWqgDUJn",
+        {
+          method: "PATCH",
+          headers: {
+            Authorization: import.meta.env.VITE_AIRTABLE_TOKEN,
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            records: [
+              {
+                id: loggedInUser.id,
+                fields: {
+                  wallet_balance:
+                    loggedInUser.fields["wallet_balance"] + Number(amountToAdd),
+                },
+              },
+            ],
+          }),
+        }
+      );
+
+      if (res.ok) {
+        console.log("Funds added");
+        getUsers();
+      }
+    } catch (error) {
+      console.log(error.message);
+    }
+  };
+
+  const handleReduceWallet = async (amountToReduce) => {
+    try {
+      const res = await fetch(
+        "https://api.airtable.com/v0/appDpRLHVndobtdcz/tblg4u2ujHWqgDUJn",
+        {
+          method: "PATCH",
+          headers: {
+            Authorization: import.meta.env.VITE_AIRTABLE_TOKEN,
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            records: [
+              {
+                id: loggedInUser.id,
+                fields: {
+                  wallet_balance:
+                    loggedInUser.fields["wallet_balance"] -
+                    Number(amountToReduce),
+                },
+              },
+            ],
+          }),
+        }
+      );
+
+      if (res.ok) {
+        console.log("Funds removed");
+        getUsers();
+      }
+    } catch (error) {
+      console.log(error.message);
+    }
+  };
+
+  // Get users on load
   useEffect(() => {
     getUsers();
   }, []);
 
+  // Update loggedInUser on change to wallet balance
+  useEffect(() => {
+    if (users && loggedInUser) {
+      const userToUpdate = users.find(
+        (user) => user.fields.username === loggedInUser.fields.username
+      );
+      setLoggedInUser(userToUpdate);
+    }
+  }, [users]);
+
   return (
     <>
-      <LoginContext.Provider value={{ loggedInUser, setShowLoginModal }}>
+      <LoginContext.Provider
+        value={{
+          loggedInUser,
+          setShowLoginModal,
+          handleAddWallet,
+          handleReduceWallet,
+        }}
+      >
         <NavBar
           setShowLoginModal={setShowLoginModal}
           setLoggedInUser={setLoggedInUser}
@@ -69,7 +154,12 @@ function App() {
         <Routes>
           <Route path="/" element={<Index />} />
           <Route path="/scores" element={<Scores />} />
-          <Route path="/:username" element={<Profile />} />
+          <Route
+            path="/:username"
+            element={
+              loggedInUser ? <Profile /> : <Navigate replace to="/"></Navigate>
+            }
+          />
           <Route path="/:username/bets" element={<MyBets />} />
           <Route path="*" element={<Index />} />
         </Routes>

@@ -1,9 +1,11 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import Button from "./Button";
 import FormInput from "./FormInput";
 import styles from "./BetItem.module.css";
+import LoginContext from "../context/LoginContext";
 
 const BetItem = ({ className, bet, userBetId, getBets }) => {
+  const loginContext = useContext(LoginContext);
   const [isAmending, setIsAmending] = useState(false);
   const [betAmountInput, setBetAmountInput] = useState("");
   const handleAmendBet = async () => {
@@ -88,6 +90,15 @@ const BetItem = ({ className, bet, userBetId, getBets }) => {
               ? () => {
                   handleAmendBet();
                   setIsAmending(false);
+                  {
+                    Number(betAmountInput) - bet["bet_amount"] > 0
+                      ? loginContext.handleReduceWallet(
+                          Number(betAmountInput) - bet["bet_amount"]
+                        )
+                      : loginContext.handleAddWallet(
+                          bet["bet_amount"] - Number(betAmountInput)
+                        );
+                  }
                 }
               : () => {
                   setIsAmending(true);
@@ -97,7 +108,13 @@ const BetItem = ({ className, bet, userBetId, getBets }) => {
         >
           Amend
         </Button>
-        <Button className="btn-delete" onClick={handleDeleteBet}>
+        <Button
+          className="btn-delete"
+          onClick={() => {
+            handleDeleteBet();
+            loginContext.handleAddWallet(bet["bet_amount"]);
+          }}
+        >
           Delete
         </Button>
       </td>

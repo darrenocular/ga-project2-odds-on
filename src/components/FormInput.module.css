@@ -21,3 +21,8 @@
 .bet-amount-input {
   width: 40%;
 }
+
+.add-funds-input {
+  width: 30%;
+  margin-left: 2px;
+}
