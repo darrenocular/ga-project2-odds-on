@@ -34,6 +34,7 @@ const BetItem = ({ className, bet, userBetId, getBets }) => {
       if (res.ok) {
         console.log("Bet amended");
         getBets();
+        setBetAmountInput("");
       }
     } catch (error) {
       console.log(error.message);
@@ -87,19 +88,24 @@ const BetItem = ({ className, bet, userBetId, getBets }) => {
           className="btn-amend"
           onClick={
             isAmending
-              ? () => {
-                  handleAmendBet();
-                  setIsAmending(false);
-                  {
-                    Number(betAmountInput) - bet["bet_amount"] > 0
-                      ? loginContext.handleReduceWallet(
-                          Number(betAmountInput) - bet["bet_amount"]
-                        )
-                      : loginContext.handleAddWallet(
-                          bet["bet_amount"] - Number(betAmountInput)
-                        );
+              ? Number(betAmountInput) > bet["bet_amount"]
+                ? loginContext.loggedInUser.fields["wallet_balance"] >=
+                  Number(betAmountInput) - bet["bet_amount"]
+                  ? () => {
+                      loginContext.handleReduceWallet(
+                        Number(betAmountInput) - bet["bet_amount"]
+                      );
+                      handleAmendBet();
+                      setIsAmending(false);
+                    }
+                  : () => console.log("Insufficient funds")
+                : () => {
+                    loginContext.handleAddWallet(
+                      bet["bet_amount"] - Number(betAmountInput)
+                    );
+                    handleAmendBet();
+                    setIsAmending(false);
                   }
-                }
               : () => {
                   setIsAmending(true);
                   setBetAmountInput(bet["bet_amount"]);

@@ -96,15 +96,20 @@ const BetTypesDisplay = ({
             <Button
               className="btn-bet"
               name="H"
-              onClick={(e) => {
-                loginContext.handleReduceWallet(betAmounts.H);
-                addBet(e);
-                setBetAmounts({
-                  H: "",
-                  D: "",
-                  A: "",
-                });
-              }}
+              onClick={
+                loginContext.loggedInUser.fields["wallet_balance"] >=
+                Number(betAmounts.H)
+                  ? (e) => {
+                      addBet(e);
+                      loginContext.handleReduceWallet(betAmounts.H);
+                      setBetAmounts({
+                        H: "",
+                        D: "",
+                        A: "",
+                      });
+                    }
+                  : () => console.log("Insufficient funds")
+              }
             >
               Place Bet
             </Button>
@@ -125,15 +130,20 @@ const BetTypesDisplay = ({
             <Button
               className="btn-bet"
               name="D"
-              onClick={(e) => {
-                addBet(e);
-                loginContext.handleReduceWallet(betAmounts.D);
-                setBetAmounts({
-                  H: "",
-                  D: "",
-                  A: "",
-                });
-              }}
+              onClick={
+                loginContext.loggedInUser.fields["wallet_balance"] >=
+                Number(betAmounts.D)
+                  ? (e) => {
+                      addBet(e);
+                      loginContext.handleReduceWallet(betAmounts.D);
+                      setBetAmounts({
+                        H: "",
+                        D: "",
+                        A: "",
+                      });
+                    }
+                  : () => console.log("Insufficient funds")
+              }
             >
               Place Bet
             </Button>
@@ -156,15 +166,20 @@ const BetTypesDisplay = ({
             <Button
               className="btn-bet"
               name="A"
-              onClick={(e) => {
-                addBet(e);
-                loginContext.handleReduceWallet(betAmounts.A);
-                setBetAmounts({
-                  H: "",
-                  D: "",
-                  A: "",
-                });
-              }}
+              onClick={
+                loginContext.loggedInUser.fields["wallet_balance"] >=
+                Number(betAmounts.A)
+                  ? (e) => {
+                      addBet(e);
+                      loginContext.handleReduceWallet(betAmounts.A);
+                      setBetAmounts({
+                        H: "",
+                        D: "",
+                        A: "",
+                      });
+                    }
+                  : () => console.log("Insufficient funds")
+              }
             >
               Place Bet
             </Button>
