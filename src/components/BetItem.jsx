@@ -7,7 +7,11 @@ import LoginContext from "../context/LoginContext";
 const BetItem = ({ className, bet, userBetId, getBets }) => {
   const loginContext = useContext(LoginContext);
   const [isAmending, setIsAmending] = useState(false);
-  const [betAmountInput, setBetAmountInput] = useState("");
+  const [betAmountInput, setBetAmountInput] = useState(undefined);
+  const betId = bet["bet_id"];
+  const game = loginContext.odds.find((game) => game.id === betId);
+  // const game = loginContext.sampleOdds.find((game) => game.id === betId);
+
   const handleAmendBet = async () => {
     try {
       const res = await fetch(
@@ -34,7 +38,7 @@ const BetItem = ({ className, bet, userBetId, getBets }) => {
       if (res.ok) {
         console.log("Bet amended");
         getBets();
-        setBetAmountInput("");
+        setBetAmountInput(undefined);
       }
     } catch (error) {
       console.log(error.message);
@@ -66,8 +70,10 @@ const BetItem = ({ className, bet, userBetId, getBets }) => {
 
   return (
     <tr className={`${styles.row} ${styles[className]}`}>
-      <td>Match</td>
-      <td>Match Date</td>
+      <td>{game ? `${game["home_team"]} vs ${game["away_team"]}` : "Match"}</td>
+      <td>
+        {game ? `${new Date(game["commence_time"]).toDateString()}` : "Date"}
+      </td>
       <td>{bet["bet_type"]}</td>
       <td>{bet.odds}</td>
       <td>

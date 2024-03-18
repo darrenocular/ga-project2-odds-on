@@ -8,8 +8,12 @@ const ScoresItem = ({ className, game }) => {
   const isGameCompleted = game.completed;
   const homeTeam = game["home_team"];
   const awayTeam = game["away_team"];
-  const homeTeamScore = game.scores ? game.scores[0].score : "0";
-  const awayTeamScore = game.scores ? game.scores[1].score : "0";
+  const homeTeamScore = game.scores
+    ? game.scores.find((score) => score.name === homeTeam).score
+    : "0";
+  const awayTeamScore = game.scores
+    ? game.scores.find((score) => score.name === awayTeam).score
+    : "0";
 
   return (
     <tr className={`${styles.row} ${styles[className]}`}>

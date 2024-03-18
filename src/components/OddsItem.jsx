@@ -12,9 +12,15 @@ const OddsItem = ({ className, game }) => {
   const isoStartTime = new Date(startTime);
   const homeTeam = game["home_team"];
   const awayTeam = game["away_team"];
-  const homeWinOdds = game.bookmakers[0].markets[0].outcomes[0].price;
-  const awayWinOdds = game.bookmakers[0].markets[0].outcomes[1].price;
-  const drawOdds = game.bookmakers[0].markets[0].outcomes[2].price;
+  const homeWinOdds = game.bookmakers[0].markets[0].outcomes.find(
+    (outcome) => outcome.name === homeTeam
+  ).price;
+  const awayWinOdds = game.bookmakers[0].markets[0].outcomes.find(
+    (outcome) => outcome.name === awayTeam
+  ).price;
+  const drawOdds = game.bookmakers[0].markets[0].outcomes.find(
+    (outcome) => outcome.name === "Draw"
+  ).price;
 
   const [showMatchDetailsModal, setShowMatchDetailsModal] = useState(false);
 
@@ -29,18 +35,20 @@ const OddsItem = ({ className, game }) => {
 
       <div className={`${styles["odds-item"]} ${styles[className]}`}>
         <div className={styles["game-details"]}>
-          <div className={styles["start-time"]}>
-            {isoStartTime.toDateString()}
+          <div>{isoStartTime.toDateString()}</div>
+          <div>
+            <strong>
+              {homeTeam} vs {awayTeam}
+            </strong>
           </div>
-          <div className={styles.game}>
-            {homeTeam} vs {awayTeam}
+          <div>
+            <strong>{homeTeam} Win:</strong> {homeWinOdds}
           </div>
-          <div className={styles["home-odds"]}>
-            {homeTeam} Win: {homeWinOdds}
+          <div>
+            <strong>Draw:</strong> {drawOdds}
           </div>
-          <div className={styles.draw}>Draw: {drawOdds}</div>
-          <div className={styles["away-odds"]}>
-            {awayTeam} Win: {awayWinOdds}
+          <div>
+            <strong>{awayTeam} Win:</strong> {awayWinOdds}
           </div>
         </div>
         <div>

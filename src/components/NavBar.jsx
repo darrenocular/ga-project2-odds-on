@@ -20,24 +20,51 @@ const NavBar = ({ setShowLoginModal, setLoggedInUser }) => {
           <li>
             <Link to="/scores">Scores</Link>
           </li>
-          {loginContext.loggedInUser && (
+        </ul>
+        <ul>
+          {loginContext.loggedInUser ? (
             <>
               <li>
                 <Link to={`/${loginContext.loggedInUser.fields.username}`}>
-                  <strong>@{loginContext.loggedInUser.fields.username}</strong>
+                  <strong>
+                    <em>@{loginContext.loggedInUser.fields.username}</em>
+                  </strong>
                 </Link>
               </li>
               <li>
-                Wallet: S${loginContext.loggedInUser.fields["wallet_balance"]}
+                Wallet:{" "}
+                <strong>
+                  S${loginContext.loggedInUser.fields["wallet_balance"]}
+                </strong>
               </li>
               <li>
                 <Link to={`/${loginContext.loggedInUser.fields.username}/bets`}>
                   My Bets
                 </Link>
               </li>
+              <li>
+                <Link to="/">
+                  <Button
+                    className="btn-login"
+                    onClick={() => setLoggedInUser(null)}
+                  >
+                    Log Out
+                  </Button>
+                </Link>
+              </li>
             </>
+          ) : (
+            <li>
+              <Button
+                className="btn-login"
+                onClick={() => setShowLoginModal(true)}
+              >
+                Login
+              </Button>
+            </li>
           )}
-          {loginContext.loggedInUser ? (
+        </ul>
+        {/* {loginContext.loggedInUser ? (
             <li>
               <Link to="/">
                 <Button
@@ -57,8 +84,7 @@ const NavBar = ({ setShowLoginModal, setLoggedInUser }) => {
                 Login
               </Button>
             </li>
-          )}
-        </ul>
+          )} */}
       </header>
     </>
   );

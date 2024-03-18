@@ -43,6 +43,11 @@ const WalletDisplay = () => {
           </Button>
         </div>
       </div>
+      {showAddWalletInput && (
+        <div>
+          <img src="./qr.jpg"></img>
+        </div>
+      )}
     </div>
   );
 };

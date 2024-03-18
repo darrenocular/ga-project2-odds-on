@@ -12,6 +12,7 @@ const BetTypesDisplay = ({
   homeWinOdds,
   drawOdds,
   awayWinOdds,
+  matchDate,
 }) => {
   const loginContext = useContext(LoginContext);
   const [betAmounts, setBetAmounts] = useState({
@@ -54,6 +55,9 @@ const BetTypesDisplay = ({
                       : e.target.name === "D"
                       ? drawOdds
                       : awayWinOdds,
+                  home_team: homeTeam,
+                  away_team: awayTeam,
+                  match_date: matchDate,
                 },
               },
             ],
@@ -63,6 +67,7 @@ const BetTypesDisplay = ({
 
       if (res.ok) {
         console.log("Bet added");
+        loginContext.getBets();
       }
     } catch (error) {
       console.log(error.message);

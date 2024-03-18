@@ -13,9 +13,15 @@ const OverLay = ({ game, setShowMatchDetailsModal }) => {
   const homeTeam = game["home_team"];
   const awayTeam = game["away_team"];
   const betType = game.bookmakers[0].markets[0].key;
-  const homeWinOdds = game.bookmakers[0].markets[0].outcomes[0].price;
-  const awayWinOdds = game.bookmakers[0].markets[0].outcomes[1].price;
-  const drawOdds = game.bookmakers[0].markets[0].outcomes[2].price;
+  const homeWinOdds = game.bookmakers[0].markets[0].outcomes.find(
+    (outcome) => outcome.name === homeTeam
+  ).price;
+  const awayWinOdds = game.bookmakers[0].markets[0].outcomes.find(
+    (outcome) => outcome.name === awayTeam
+  ).price;
+  const drawOdds = game.bookmakers[0].markets[0].outcomes.find(
+    (outcome) => outcome.name === "Draw"
+  ).price;
 
   const [showHistoricalOdds, setShowHistoricalOdds] = useState(false);
 
@@ -58,6 +64,7 @@ const OverLay = ({ game, setShowMatchDetailsModal }) => {
         {!showHistoricalOdds ? (
           <BetTypesDisplay
             id={id}
+            matchDate={startTime}
             homeTeam={homeTeam}
             awayTeam={awayTeam}
             betType={betType}

@@ -11,7 +11,10 @@
   font-weight: 300;
 }
 
-.flex {
-  display: flex;
-  justify-content: center;
+.success {
+  color: #1e7400;
+}
+
+.failure {
+  color: #ff0000;
 }
