@@ -18,7 +18,7 @@ const BetsHistoryItem = ({ className, bet }) => {
         className={bet["bet_win"] ? `${styles.success}` : `${styles.failure}`}
       >
         {bet["bet_win"] ? "+" : "-"}
-        {bet["net_gain"]}
+        {bet["net_gain"].toFixed(2)}
       </td>
     </tr>
   );

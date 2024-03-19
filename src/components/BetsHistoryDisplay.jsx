@@ -5,6 +5,13 @@ import BetsHistoryItem from "./BetsHistoryItem";
 
 const BetsHistoryDisplay = () => {
   const loginContext = useContext(LoginContext);
+  const netGain = loginContext.userBets
+    .reduce((accum, elem) => {
+      return elem.fields["bet_win"]
+        ? accum + elem.fields["net_gain"]
+        : accum - elem.fields["net_gain"];
+    }, 0)
+    .toFixed(2);
   return (
     <div className={styles["bets-history-display"]}>
       <table className={styles.table}>
@@ -32,12 +39,14 @@ const BetsHistoryDisplay = () => {
           )}
         </tbody>
       </table>
-      {/* <div className={styles["net-gain-row"]}>
+      <div className={styles["net-gain-row"]}>
         <p>
           <strong>Total Net Gain (+/-) (S$)</strong>
         </p>
-        <p>XXX</p>
-      </div> */}
+        <p className={netGain >= 0 ? `${styles.green}` : `${styles.red}`}>
+          <strong>{netGain}</strong>
+        </p>
+      </div>
     </div>
   );
 };

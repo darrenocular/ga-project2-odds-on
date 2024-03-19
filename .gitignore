@@ -124,5 +124,3 @@ dist/
 
 .idea/
 .vscode/
-**/*.jpg
-!/public/*.jpg

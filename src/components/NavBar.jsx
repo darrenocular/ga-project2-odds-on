@@ -64,27 +64,6 @@ const NavBar = ({ setShowLoginModal, setLoggedInUser }) => {
             </li>
           )}
         </ul>
-        {/* {loginContext.loggedInUser ? (
-            <li>
-              <Link to="/">
-                <Button
-                  className="btn-login"
-                  onClick={() => setLoggedInUser(null)}
-                >
-                  Log Out
-                </Button>
-              </Link>
-            </li>
-          ) : (
-            <li>
-              <Button
-                className="btn-login"
-                onClick={() => setShowLoginModal(true)}
-              >
-                Login
-              </Button>
-            </li>
-          )} */}
       </header>
     </>
   );

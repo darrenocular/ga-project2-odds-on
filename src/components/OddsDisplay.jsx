@@ -10,13 +10,6 @@ const OddsDisplay = () => {
     <>
       <div className={styles["odds-display"]}>
         <p className={styles["league-header"]}>English Premier League (EPL)</p>
-        {/* {loginContext.sampleOdds.map((game, idx) => (
-          <OddsItem
-            className={idx % 2 === 0 ? "bg-lt-orange" : "bg-lt-yellow"}
-            key={idx}
-            game={game}
-          ></OddsItem>
-        ))} */}
         {loginContext.odds.map((game, idx) => (
           <OddsItem
             className={idx % 2 === 0 ? "bg-lt-orange" : "bg-lt-yellow"}

@@ -66,12 +66,9 @@ const BetTypesDisplay = ({
       );
 
       if (res.ok) {
-        console.log("Bet added");
         loginContext.getBets();
       }
-    } catch (error) {
-      console.log(error.message);
-    }
+    } catch (error) {}
   };
 
   return (

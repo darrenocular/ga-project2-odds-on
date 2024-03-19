@@ -20,13 +20,6 @@ const ScoresDisplay = () => {
             </tr>
           </thead>
           <tbody className={styles.tbody}>
-            {/* {loginContext.sampleScores.map((game, idx) => (
-              <ScoresItem
-                className={idx % 2 === 0 ? "bg-lt-orange" : "bg-lt-yellow"}
-                game={game}
-                key={idx}
-              ></ScoresItem>
-            ))} */}
             {loginContext.scores.map((game, idx) => (
               <ScoresItem
                 className={idx % 2 === 0 ? "bg-lt-orange" : "bg-lt-yellow"}

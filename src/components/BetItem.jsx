@@ -10,7 +10,6 @@ const BetItem = ({ className, bet, userBetId, getBets }) => {
   const [betAmountInput, setBetAmountInput] = useState(undefined);
   const betId = bet["bet_id"];
   const game = loginContext.odds.find((game) => game.id === betId);
-  // const game = loginContext.sampleOdds.find((game) => game.id === betId);
 
   const handleAmendBet = async () => {
     try {
@@ -36,13 +35,10 @@ const BetItem = ({ className, bet, userBetId, getBets }) => {
       );
 
       if (res.ok) {
-        console.log("Bet amended");
         getBets();
         setBetAmountInput(undefined);
       }
-    } catch (error) {
-      console.log(error.message);
-    }
+    } catch (error) {}
   };
 
   const handleDeleteBet = async () => {
@@ -63,9 +59,7 @@ const BetItem = ({ className, bet, userBetId, getBets }) => {
         console.log("Bet deleted");
         getBets();
       }
-    } catch (error) {
-      console.log(error.message);
-    }
+    } catch (error) {}
   };
 
   return (
