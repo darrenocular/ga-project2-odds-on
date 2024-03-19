@@ -156,3 +156,6 @@ For further development, we will:
 - The Odds API documentation: https://the-odds-api.com/liveapi/guides/v4/#overview
 - Wireframes: https://www.figma.com/file/drmo06YLo0u2j3ZLclobAx/Odds-On?type=design&node-id=0-1&mode=design&t=mJH56NstIlkdzAZR-0
 - Public board: https://github.com/users/darrenocular/projects/2/views/1
+- React hierarchy:
+
+  ![React Hierarchy](./public/assets/odds-on-hierarchy.png)
