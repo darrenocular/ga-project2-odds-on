@@ -4,6 +4,8 @@
 
 A sports betting platform displaying live odds for your favourite matches built on React.
 
+Deployed on Vercel: https://project2-odds-on.vercel.app/
+
 ## Technology
 
 - HTML
